@@ -47,7 +47,10 @@ ABI = [
 
 contrato = w3.eth.contract(address=token_address, abi=ABI)
 decimals = contrato.functions.decimals().call()
+
+
 saldo_token_bruto = contrato.functions.balanceOf(wallet).call()
 saldo_token = saldo_token_bruto / 10 ** decimals
 
+print(f"Saldo Bruto: {saldo_token_bruto} USDT")
 print(f"Saldo USDT: {saldo_token:.4f} USDT")
