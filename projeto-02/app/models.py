@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import declarative_base
 from datetime import datetime
 
-BRT = timezone(timedelta(hours=-3))
 
 Base = declarative_base()
 
