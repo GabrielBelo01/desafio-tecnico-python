@@ -29,12 +29,12 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-4. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+4. Crie um arquivo `.env` na raiz do projeto baseado no `.env.example`:
 ```
-RPC_URL_1=https://bsc-dataseed.binance.org/
-RPC_URL_2=https://bsc-dataseed1.defibit.io/
-WALLET=0xF977814e90dA44bFA03b6295A0616a897441aceC
-TOKEN_ADDRESS=0x55d398326f99059fF775485246999027B3197955
+RPC_URL_1=
+RPC_URL_2=
+WALLET=
+TOKEN_ADDRESS=
 ```
 
 - `RPC_URL_1` e `RPC_URL_2` — endpoints de acesso à BSC (o segundo é o fallback)
