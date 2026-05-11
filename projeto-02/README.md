@@ -12,6 +12,7 @@ service.py    →  orquestra a coleta e o salvamento
 repository.py →  operações no banco de dados
 database.py   →  conexão com o PostgreSQL via SQLAlchemy
 models.py     →  definição da tabela no banco
+schemas.py    →  modelos Pydantic para definir resposta da API
 api.py        →  endpoints FastAPI
 ```
 
@@ -105,5 +106,5 @@ O Swagger estará disponível em `http://127.0.0.1:8000/docs`
 | Método | Rota | Descrição |
 |---|---|---|
 | GET | `/balances/latest` | Último saldo de cada wallet monitorada |
-| GET | `/balances/{wallet}/history` | Histórico de uma wallet específica |
+| GET | `/balances/{wallet}/history` | Histórico de uma wallet específica com paginação via ?=limit=|
 | GET | `/stats` | Wallet com maior saldo |
