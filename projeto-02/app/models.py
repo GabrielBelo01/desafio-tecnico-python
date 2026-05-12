@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy import Column, Integer, String, Numeric, DateTime
 from sqlalchemy.orm import declarative_base
 from datetime import datetime
 
@@ -11,5 +11,5 @@ class Consulta(Base):
     id          = Column(Integer, primary_key=True, autoincrement=True)
     wallet      = Column(String, nullable=False)
     token       = Column(String, nullable=False)
-    saldo       = Column(Float, nullable=False)
+    saldo = Column(Numeric(precision=30, scale=18), nullable=False)
     coletado_em = Column(DateTime, default=datetime.utcnow)

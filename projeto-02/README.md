@@ -106,5 +106,5 @@ O Swagger estará disponível em `http://127.0.0.1:8000/docs`
 | Método | Rota | Descrição |
 |---|---|---|
 | GET | `/balances/latest` | Último saldo de cada wallet monitorada |
-| GET | `/balances/{wallet}/history` | Histórico de uma wallet específica com paginação via ?=limit=|
+| GET | `/balances/{wallet}/history` | Histórico de uma wallet específica com paginação via ?limit=|
 | GET | `/stats` | Wallet com maior saldo |

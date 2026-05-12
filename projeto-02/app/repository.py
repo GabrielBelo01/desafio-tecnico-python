@@ -34,5 +34,28 @@ def buscar_stats(db):
     """)).mappings().all()
 
     maior = max(resultados, key=lambda x: x["saldo"])
-    return {"wallet_maior_saldo": maior}
+
+    variacao = db.execute(text("""
+        SELECT
+            wallet,
+            ROUND(
+                ((saldo_atual - saldo_anterior) / NULLIF(saldo_anterior, 0) * 100)::numeric,
+                2
+            ) AS variacao_percentual
+        FROM (
+            SELECT
+                wallet,
+                FIRST_VALUE(saldo) OVER (PARTITION BY wallet ORDER BY coletado_em DESC) AS saldo_atual,
+                FIRST_VALUE(saldo) OVER (PARTITION BY wallet ORDER BY coletado_em ASC) AS saldo_anterior,
+                ROW_NUMBER() OVER (PARTITION BY wallet ORDER BY coletado_em DESC) AS rn
+            FROM consultas
+            WHERE coletado_em >= NOW() - INTERVAL '24 hours'
+        ) sub
+        WHERE rn = 1
+    """)).mappings().all()
+
+    return {
+        "wallet_maior_saldo": maior,
+        "variacao_24h": [dict(v) for v in variacao]
+    }
    

@@ -1,5 +1,6 @@
 from web3 import Web3
 from dotenv import load_dotenv
+from decimal import Decimal
 import os
 
 load_dotenv()
@@ -52,7 +53,7 @@ def consultar_saldos():
 
     for wallet in wallets:
         saldo_bruto = contrato.functions.balanceOf(wallet).call()
-        saldo = saldo_bruto / 10 ** decimals
+        saldo = Decimal(saldo_bruto) / Decimal(10 ** decimals)
         resultados.append({
             "wallet": wallet,
             "saldo": saldo,

@@ -15,5 +15,10 @@ class WalletSaldo(BaseModel):
     wallet: str
     saldo: float
 
+class WalletVariacao(BaseModel):
+    wallet: str
+    variacao_percentual: float
+
 class StatsResponse(BaseModel):
-    wallet_maior_saldo: WalletSaldo     
+    wallet_maior_saldo: WalletSaldo
+    variacao_24h: list[WalletVariacao]
