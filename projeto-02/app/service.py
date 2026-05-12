@@ -6,8 +6,9 @@ def salvar_consulta_no_banco():
     conexao = SessionLocal()
 
     try:
-        saldo_wallets = consultar_saldos()
-        for dados in saldo_wallets:
+        dados_wallets = consultar_saldos()
+        
+        for dados in dados_wallets:
             salvar_consulta(conexao, dados)
         conexao.commit()
     except Exception as e:

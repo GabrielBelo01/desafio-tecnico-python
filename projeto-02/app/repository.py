@@ -8,7 +8,6 @@ def salvar_consulta (db, dados):
         saldo=dados["saldo"]
     )
     db.add(consulta)
-    db.commit()
 
 def buscar_ultimos(db):
     resultado = db.execute(text("""
